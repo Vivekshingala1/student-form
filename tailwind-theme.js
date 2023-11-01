@@ -7,7 +7,7 @@ export default {
       fieldset: 'max-w-md border border-gray-400 rounded px-2 pb-1',
       help: 'text-xs text-gray-500',
       inner:
-        'formkit-disabled:bg-gray-200 formkit-disabled:cursor-not-allowed formkit-disabled:pointer-events-none',
+        'formkit-disabled:bg-gray-200 formkit-disabled:cursor-not-allowed formkit-disabled:pointer-events-none' ,
       input:
         'appearance-none bg-transparent focus:outline-none focus:ring-0 focus:shadow-none',
       label: 'block mb-1 font-bold text-sm',
