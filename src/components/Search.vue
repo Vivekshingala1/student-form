@@ -2,7 +2,7 @@
 
 <!-- <input type="text" @input="emit('setSearch',$event.target.value)" placeholder="search"/> -->
 
-<FormKit type="search" placeholder="Search..." v-model="search" @onchange="emit('setSearch',$event.target.value)" />
+<FormKit type="search" placeholder="Search..." v-model="search" @input="emit('setSearch',$event)"  />
 
 
 </template>

@@ -23,8 +23,10 @@
 
     </div>
 
-    <div class="table mt-10">
-
+    <div class="table mt-10 ">
+      <div class="">
+      <Search @setSearch="setSearch"/>
+    </div>
       <table class="border-separate border-spacing-2 border border-slate-400" :key="key">
         <thead>
           <tr>
@@ -36,10 +38,10 @@
             <th class="border border-slate-300">mobileNumber</th>
             <th class="border border-slate-300">class</th>
 
-            <Search @setSearch="setSearch"/>
+           
 
           </tr>
-
+   
         </thead>
         <tbody>
           <tr v-for="student in studentData">
@@ -53,7 +55,7 @@
         </tbody>
 
       </table>
-     
+
       <Pagination :student="student" :currentPage="currentPage" @SetcurrentPage="SetcurrentPage" />
 
     </div>
@@ -68,9 +70,6 @@ import { ref, computed } from 'vue';
 import Pagination from "./Pagination.vue"
 import Search from './search.vue';
 
-
-
-
 const student = ref([]);
 const search = ref();
 
@@ -82,14 +81,16 @@ const studentData = computed(() => {
   let value = [...student.value]
 
   if (search.value?.length > 0) {
-    value = student.value.filter((row) =>
-
-    row.class.includes(search.value) ||
-      row.surname.includes(search.value) ||
-      row.name.includes(search.value) ||
-      row.fatherName.includes(search.value) ||
-      row.rollNo.includes(search.value) ||
-      row.mobileNumber.includes(search.value) 
+    value = student.value.filter((row) =>{
+      if(row.class.includes(search.value) ||
+       row.surname.includes(search.value) ||
+        row.name.includes(search.value) ||
+         row.fatherName.includes(search.value) || 
+         row.rollNo.includes(search.value) || 
+         row.mobileNumber.includes(search.value)  ){
+        return row
+      }
+    }
     )
   }
 
@@ -108,6 +109,7 @@ const submitForm = (data) => {
 };
 
 
+
 const SetcurrentPage = (index) => {
   currentPage.value = index
   key.value++
@@ -115,10 +117,10 @@ const SetcurrentPage = (index) => {
 
 
 const setSearch = (value) => {
+  console.log(value);
   search.value = value
   key.value++
 }
-
 
 
 </script>
